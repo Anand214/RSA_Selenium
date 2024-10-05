@@ -1,0 +1,49 @@
+package rahulshettyacademy.SeleniumFrameworkDesign.PageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LoginPageObjects {
+
+	WebDriver driver;
+
+	public LoginPageObjects(WebDriver driver) {
+
+		this.driver = driver;
+		// pagefactory(c) has initElemets method to initiatlize i.e., provide driver
+		// instance for all @fingby
+		// we declare it in constructor because in any class this the the first line of
+		// code which runs
+		// #Initialization
+		PageFactory.initElements(driver, this);
+	}
+//
+//	WebElement userEmail = driver.findElement(By.id("userEmail"));
+//	WebElement userPswd = driver.findElement(By.id("userPassword"));
+//	WebElement loginButton = driver.findElement(By.id("login"));
+
+	// Page factory findBy annotation, #Declaration
+	@FindBy(id = "userEmail")
+	private WebElement userEmail;
+	@FindBy(id = "userPassword")
+	private WebElement userPswd;
+	@FindBy(id = "login")
+	private WebElement loginButton;
+
+	// Utilization by creating action methods
+
+	public void loginApplication(String email, String password) {
+
+		userEmail.sendKeys(email);
+		userPswd.sendKeys(password);
+		loginButton.click();
+
+	}
+	
+	public void goTOApplication() {
+		driver.get("https://rahulshettyacademy.com/client/");
+	}
+
+}

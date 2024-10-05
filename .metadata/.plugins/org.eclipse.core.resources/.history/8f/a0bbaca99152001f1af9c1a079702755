@@ -1,0 +1,48 @@
+package rahulshettyacademy.SeleniumFrameworkDesign.PageObjects;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+public class HomeProductsCataloguePageObjects {
+
+	WebDriver driver;
+
+	public HomeProductsCataloguePageObjects(WebDriver driver) {
+
+		this.driver = driver;
+		// pagefactory(c) has initElemets method to initiatlize i.e., provide driver
+		// instance for all @fingby
+		// we declare it in constructor because in any class this the the first line of
+		// code which runs
+		// #Initialization
+		PageFactory.initElements(driver, this);
+	}
+//
+//	WebElement userEmail = driver.findElement(By.id("userEmail"));
+//	WebElement userPswd = driver.findElement(By.id("userPassword"));
+//	WebElement loginButton = driver.findElement(By.id("login"));
+
+	// Page factory findBy annotation, #Declaration
+
+	@FindBy(css = ".mb-3")
+	private List<WebElement> productList;
+	@FindBy(css = "#toast-container [aria-label='Login Successfully']")
+	private WebElement loginSuccessMsg;
+	@FindBy(css = ".ngx-spinner-overlay")
+	private WebElement loadingPage;
+	@FindBy(css = "#toast-container [aria-label='Product Added To Cart']")
+	private WebElement productToCartMsg;
+	@FindBy(css = "[routerlink*='cart']")
+	private WebElement cartLink;
+
+	// Utilization by creating action methods
+
+	
+
+}
